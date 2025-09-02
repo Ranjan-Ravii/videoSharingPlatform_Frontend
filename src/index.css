@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Global Typography and Colors */
+:root {
+  --text-primary: #f3f4f6; /* gray-100 */
+  --text-secondary: #d1d5db; /* gray-300 */
+  --text-muted: #9ca3af; /* gray-400 */
+  --bg-primary: #000000; /* black */
+  --bg-secondary: #111111; /* near black */
+  --accent-color: #ef4444; /* red-500 */
+}
+
+/* Scrollbar for modern browsers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary); /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--text-muted); /* Thumb color */
+  border-radius: 8px;
+  border: 2px solid var(--bg-secondary); /* Padding around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Global Styles */
+html, body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden; /* Prevent page-level scrolling */
+  height: 100vh; /* Full viewport height */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Focus states for better accessibility */
+*:focus {
+  outline: none;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--accent-color);
+  color: var(--text-primary);
+}
