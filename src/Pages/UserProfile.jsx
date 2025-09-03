@@ -1,13 +1,16 @@
-
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import VideoCard from '../Components/VideoCard';
 import api from '../Services/api';
-import FormatFetchedDate from '../Utils/FormatFetchedDate';
+import FormatDate from '../Utils/FormatDate';
+import FormatDuration from '../Utils/FormatDuration';
+import VideoPlayerLayout from '../Components/VideoPlayerLayout';
 
 const UserProfile = ({ username: propUsername }) => {
   const authUser = useSelector((state) => state.auth.user);
   const profileUsername = propUsername || authUser?.username;
+  const [activeVideo, setActiveVideo] = useState(null); 
+  
 
   const {
     avatar: authAvatar,
@@ -99,22 +102,11 @@ const UserProfile = ({ username: propUsername }) => {
   const subscriberCount = channelProfile?.subscribersCount || 0;
   const videoCount = videos.length;
 
-  // ✅ Better duration formatting
-  const formatDuration = (seconds) => {
-    if (!seconds) return "0:00";
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
-
-
-
-  const handleCardClick = (index) => {
-    console.log('Video clicked:', videos[index]);
-  };
 
   return (
-    <div className="w-full min-h-screen bg-black text-white">
+    <div>
+      {!activeVideo ? (
+        <div className="w-full min-h-screen bg-black text-white">
       {/* Cover Image */}
       <div className="relative h-44 w-full bg-gray-800 rounded-2xl overflow-hidden">
         {channelProfile?.coverImage || authCoverImage ? (
@@ -186,10 +178,10 @@ const UserProfile = ({ username: propUsername }) => {
                   thumbnail={video.thumbnail}
                   description={video.description}
                   videoFile={video.videoFile}
-                  duration={formatDuration(video.duration)}
+                  duration={FormatDuration(video.duration)}
                   viewCount={video.viewedBy.length}
-                  publishedAt={FormatFetchedDate(video.updatedAt)}
-                  onClick={() => handleCardClick(index)}
+                  publishedAt={FormatDate(video.updatedAt)}
+                  onClick={() => setActiveVideo(video)}
                   isActive={false}
                   // ⬇️ FIX: Use video.owner avatar if available, else fallback
                   ownerAvatar={video.owner?.avatar || channelProfile?.avatar || authAvatar}
@@ -199,6 +191,18 @@ const UserProfile = ({ username: propUsername }) => {
           </div>
         </div>
       </div>
+    </div>
+      ) : (
+        <div>
+          <VideoPlayerLayout 
+            activeVideo={activeVideo}
+            listOfVideos={videos}
+            onBack={() => setActiveVideo(null)}
+            onSelectVideo={(video) => setActiveVideo(video)}
+          />
+        </div>
+      )}
+
     </div>
   );
 };
