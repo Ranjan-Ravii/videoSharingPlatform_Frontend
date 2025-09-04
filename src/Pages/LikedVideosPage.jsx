@@ -26,7 +26,7 @@ const Likedvideospage = () => {
                 const { data } = await api.get(`/like/videoslikes/c/${authUser.username}`)
                 setVideos(data?.data?.likedVideos || []);
                 setOwner(data.data.user || null);
-                console.log(data.data.likedVideos);
+                // console.log(data.data.likedVideos);
             } catch (error) {
                 console.log("Error while fetching liked video : ", error);
                 alert("Error! You may need to Login ")

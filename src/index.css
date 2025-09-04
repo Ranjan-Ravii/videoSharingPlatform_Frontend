@@ -61,6 +61,6 @@ p {
 
 /* Selection color */
 ::selection {
-  background-color: var(--accent-color);
-  color: var(--text-primary);
+  background-color: blue;
+  color: white;
 }

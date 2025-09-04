@@ -6,15 +6,14 @@ import WatchHistoryPage from '../Pages/WatchHistoryPage.jsx';
 import UserSubscribedPage from '../Pages/UserSubscribedPage.jsx';
 
 const MainContent = ({ activeSection }) => {
-  const username = useSelector((state) => state.auth.user?.username);
+  const activeUser = useSelector((state) => state.auth.user);
 
   const renderContent = () => {
     switch (activeSection) {
       case 'Home':
         return <Home />;
       case 'Profile':
-        // Pass the username as a prop to UserProfile
-        return username ? <UserProfile username={username} /> : <div>Please log in to view profile</div>;
+        return activeUser ? <UserProfile activeUser={activeUser} onBack={() => {}} /> : <div>Please log in to view profile</div>;
       case 'Playlist':
         return <div>Playlist details...</div>;
       case 'Watch History':
