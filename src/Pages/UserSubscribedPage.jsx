@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import api from "../Services/api";
 import { useSelector } from "react-redux";
 import { Bell, Binoculars, User, Video } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import UserProfile from "./UserProfile";
 
 const UserSubscribedPage = () => {
+
+  const navigate = useNavigate()
 
   const authUser = useSelector((state) => state.auth.user)
   const [creatorsData, setCreatersData] = useState(null);
@@ -113,6 +116,7 @@ const UserSubscribedPage = () => {
                 <button 
                 onClick={() => {
                   setActiveUser(creater?.channel);
+                  navigate(`/profile/${creater?.channel?.username}`)
                 }}
                 className="w-fit px-5 py-2 text-sm md:text-base bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center gap-2 cursor-pointer">
                   <Binoculars size={18} />

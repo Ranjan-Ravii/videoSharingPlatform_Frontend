@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Sidebar from '../Components/leftSidebar.jsx';
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../Components/Sidebar.jsx';
 import MainContent from '../Components/MainContent.jsx';
 
 const Hero = () => {
@@ -7,8 +8,10 @@ const Hero = () => {
 
   return (
     <div className="h-full flex">
-      <Sidebar setActiveSection={setActiveSection} activeSection={activeSection} />
-      <MainContent activeSection={activeSection} />
+      <Sidebar/>
+       <main className="flex-1 bg-black-900 text-white p-4 overflow-y-auto">
+        <Outlet />
+      </main>
     </div>
   );
 };

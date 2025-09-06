@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideos } from '../Features/AllVideos.slice.jsx'
+import { useNavigate } from "react-router-dom";
 
 import VideoCard from "../Components/VideoCard.jsx";
 import FormatDate from "../Utils/FormatDate.jsx";
@@ -8,6 +9,8 @@ import FormatDuration from "../Utils/FormatDuration.jsx";
 import VideoPlayerLayout from "../Components/VideoPlayerLayout.jsx";
 
 const Home = () => {
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch()
   const { videos, loading, error } = useSelector((state) => state.allVideos);
@@ -36,10 +39,12 @@ const Home = () => {
               publishedAt={FormatDate(video.createdAt)}
               ownerUsername={video?.owner?.Username}
               ownerAvatar={video?.owner?.avatar}
-              onClick={() => {
-                // console.log("video clicked", video?._id);
-                setActiveVideo(video);
-              }}
+              // onClick={() => {
+              //   // console.log("video clicked", video?._id);
+              //   setActiveVideo(video);
+              //   // navigate(`/video/${video._id}`, { state: { video } })
+              // }}
+              onClick={() => navigate(`/watch/${video?._id}`)}
             />
           ))}
         </div>
@@ -48,7 +53,7 @@ const Home = () => {
         <VideoPlayerLayout
           activeVideo={activeVideo}
           listOfVideos={videos}
-          onSelectVideo={(video) => setActiveVideo(video)}
+          onSelectVideo={(video) => {setActiveVideo(video)}}
           onBack={() => setActiveVideo(null)}
         />
       )}

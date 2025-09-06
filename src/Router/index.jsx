@@ -11,6 +11,7 @@ import LikedVideosPage from "../Pages/LikedVideosPage.jsx"
 import UserSubscribedPage from "../Pages/UserSubscribedPage.jsx"
 import Upload from "../Pages/Upload.jsx";
 import NotAvailableCard from "../Utils/NotAvailable.jsx";
+import VideoPlayerLayout from "../Components/VideoPlayerLayout.jsx";
 
 
 function PrivateRoute({ children }) {
@@ -27,13 +28,15 @@ export default function AppRouter() {
 
       <Route path="/" element={<Hero/>}>
         <Route index element={<Home />} />
+        <Route path="/watch/:videoId" element={<VideoPlayerLayout />} />
+        <Route path="/like/video/:videoId" element={<VideoPlayerLayout />} />
         <Route path="profile/:username" element={<UserProfile />} />
-        {/* <Route path="playlist" element={<div>Playlist details...</div>} /> */}
-        <Route path="history" element={<WatchHistoryPage />} />
-        <Route path="liked/videos" element={<LikedVideosPage />} />
+        <Route path="playlist" element={<div>Playlist details...</div>} />
+        <Route path="watch/history" element={<WatchHistoryPage />} />
+        <Route path="like/videos" element={<LikedVideosPage />} />
         <Route path="subscriptions" element={<UserSubscribedPage />} />
       </Route>
-
+      <Route path="/video/:videoId" element={<VideoPlayerLayout />} />
 
       <Route
         path="/upload"
