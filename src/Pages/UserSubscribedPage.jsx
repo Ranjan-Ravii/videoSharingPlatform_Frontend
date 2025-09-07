@@ -62,7 +62,7 @@ const UserSubscribedPage = () => {
 
 
   return (
-    <div className="w-full min-h-screen bg-black text-white">
+    <div className="w-full min-h-full mb-15 bg-black text-white">
       {!activeUser ? (
         <div>
           {creatorsData?.subscriptions.map((creater, index) => (

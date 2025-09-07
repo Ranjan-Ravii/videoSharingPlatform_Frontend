@@ -15,8 +15,6 @@ const Likedvideospage = () => {
 
   const [videos, setVideos] = useState([]);
   const [owner, setOwner] = useState(null);
-  
-
   // console.log(videos);
 
 
@@ -44,8 +42,7 @@ const Likedvideospage = () => {
 
 
   return (
-    <div>
-
+    <div className=" bg-black min-h-full ml-5 mb-15">
       <div className="w-[60%] ">
         {videos.length === 0 ? (
           <div className="w-full bg-black text-white flex items-center justify-center">
@@ -69,7 +66,6 @@ const Likedvideospage = () => {
               ownerAvatar={owner?.avatar}
               onClick={() => navigate(`/like/video/${like?.video?._id}`)}
               // isActive={activeVideo?._id === like.video?._id}
-
             />
           ))
         )}

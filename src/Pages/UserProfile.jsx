@@ -102,15 +102,10 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div className="w-full min-h-screen bg-black text-white">
+      <div className="w-full min-h-full bg-black text-white mb-15 ml-5">
 
         <div className="relative h-44 w-full bg-gray-800 rounded-2xl overflow-hidden ">
-          <button
-            className="absolut absolute -right-0  bg-black rounded-full z-10 hover:bg-gray-700 transition-colors duration-200 border border-gray-700 cursor-pointer"
-            onClick={() => { nevigate(-1) }}
-          >
-            <XCircle className="text-gray-300 hover:text-red-400 transition-colors" size={24} />
-          </button>
+          
           {channelProfile?.coverImage || authCoverImage ? (
             <img
               src={channelProfile?.coverImage || authCoverImage}

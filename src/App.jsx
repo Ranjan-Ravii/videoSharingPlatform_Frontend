@@ -15,13 +15,13 @@ function App() {
     }
   }, [dispatch]);
 
-
-
   return (
-    <div className="h-screen overflow-hidden flex flex-col">
+    <div className="flex flex-col h-screen bg-black">
       <Navbar />
       <div className="flex-1 overflow-hidden">
-        <AppRouter />
+        <div className="min-h-full">
+          <AppRouter />
+        </div>
       </div>
     </div>
   );

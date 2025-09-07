@@ -28,7 +28,7 @@ const MainContent = ({ activeSection }) => {
   };
 
   return (
-    <main className="flex-1 overflow-y-auto bg-black text-white p-5 h-full">
+    <main className="flex-1  bg-green-500 text-white p-5">
       {renderContent()}
     </main>
   );
