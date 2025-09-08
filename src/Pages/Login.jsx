@@ -26,7 +26,7 @@ const Login = () => {
     return (
         <>
         
-        <div className="flex items-center justify-center min-h-screen bg-black">
+        <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
             <div className="flex flex-col w-1/3 bg-gray-800 p-6 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Log In</h2>
 

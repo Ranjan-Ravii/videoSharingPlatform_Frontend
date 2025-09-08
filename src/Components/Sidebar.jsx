@@ -25,7 +25,7 @@ const Sidebar = ({ collapsed, onToggle }) => {
   ];
 
   return (
-    <aside className={`${collapsed ? 'w-16' : 'w-60'} bg-black border-r border-gray-800 flex flex-col transition-all duration-500 ease-in-out  lg:flex`}>
+    <aside className={`${collapsed ? 'w-16' : 'w-60'}  bg-gradient-to-bl from-gray-900 via-black to-gray-900 text-white flex flex-col transition-all duration-500 ease-in-out  lg:flex`}>
       {/* Header with Menu Button */}
       <div className="flex items-center justify-between p-2 sm:p-4 ">
         <button

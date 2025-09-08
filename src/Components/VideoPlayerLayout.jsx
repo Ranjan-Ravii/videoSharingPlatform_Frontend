@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Bell, ThumbsUp, Share2, XCircle, MenuIcon, EllipsisVertical, Trash, PenIcon } from 'lucide-react';
+import { Bell, ThumbsUp, Share2, XCircle, MenuIcon, EllipsisVertical, Trash, PenIcon, ActivityIcon } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -65,19 +65,31 @@ const VideoPlayerLayout = () => {
       const token = localStorage.getItem('accessToken');
 
       try {
-        const { data } = await api.post(
+        await api.post(
           'video/views/add', { videoId: activeVideo?._id });
-
-        // console.log(data?.viewedBy);
-        setViewsCount(data?.viewedBy.length);
       } catch (e) {
         console.error('Error updating views:', e?.response?.data || e.message);
       }
     };
-
     updateViews();
   }, [activeVideo?._id]);
 
+  // ------------- add to watch history ---------
+  useEffect(() => {
+
+     if (!activeVideo?._id) return;
+
+    const addToHistory = async () => {
+      try {
+        await api.post('users/history/add', { videoId : activeVideo?._id})
+        
+      } catch (error) {
+        console.log("Error adding to history ", error.response?.data || error.message );
+      }
+    }
+
+    addToHistory()
+  }, [activeVideo?._id])
 
 
   // ---------- Likes ----------
@@ -253,7 +265,7 @@ const VideoPlayerLayout = () => {
   if (!activeVideo) return <div className="text-white p-4">Loading or Video not found...</div>;
 
   return (
-    <div className="bg-black min-h-screen ml-1 mb-10 -mt-1">
+    <div className="min-h-screen ml-5 mb-15 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 p-2 sm:p-4">
         {/* Main Video Section */}
         <div className="flex-1 lg:max-w-4xl">
@@ -323,9 +335,9 @@ const VideoPlayerLayout = () => {
             </div>
 
             {/* Video Description */}
-            <div className="bg-gray-900 rounded-lg p-4">
+            <div className="bg-gray-950 rounded-lg p-4">
               <div className="text-sm text-gray-400 mb-2">
-                {viewsCount.toLocaleString()} views • {FormatDate(activeVideo.createdAt)}
+                {activeVideo?.viewedBy.length.toLocaleString()} views • {FormatDate(activeVideo.createdAt)}
               </div>
               <div className="text-white whitespace-pre-wrap">
                 {activeVideo.description}
@@ -346,7 +358,7 @@ const VideoPlayerLayout = () => {
                   alt="Your avatar"
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = 'data:image/svg+xml;base64';
+                    // e.target.src = 'data:image/svg+xml;base64';
                   }}
                 />
                 <div className="flex-1">
@@ -449,7 +461,7 @@ const VideoPlayerLayout = () => {
                       </button>
 
                       {commentOption === c._id && (
-                        <div className={`absolute left-full top-0 ml-2 w-32 bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-2 z-10
+                        <div className={`absolute right-full top-0 ml-2 w-32 bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-2 z-10
                          ${c?.owner?._id === authUser?._id ?
                             "" :
                             "cursor-not-allowed pointer-events-none select-none opacity-50"}`

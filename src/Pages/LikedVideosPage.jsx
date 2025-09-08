@@ -42,7 +42,7 @@ const Likedvideospage = () => {
 
 
   return (
-    <div className=" bg-black min-h-full ml-5 mb-15">
+    <div className="min-h-full ml-5 mb-15 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
       <div className="w-[60%] ">
         {videos.length === 0 ? (
           <div className="w-full bg-black text-white flex items-center justify-center">
@@ -61,7 +61,7 @@ const Likedvideospage = () => {
               description=""
               duration={FormatDuration(like.video.duration)}
               viewCount={like.video.viewedBy.length}
-              publishedAt={FormatDate(like.video.createdAt)}
+              publishedAt={FormatDate(like.createdAt)}
               ownerUsername={owner?.username}
               ownerAvatar={owner?.avatar}
               onClick={() => navigate(`/like/video/${like?.video?._id}`)}

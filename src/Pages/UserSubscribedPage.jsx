@@ -62,7 +62,7 @@ const UserSubscribedPage = () => {
 
 
   return (
-    <div className="w-full min-h-full mb-15 bg-black text-white">
+    <div className="w-full min-h-full ml-5 mb-15 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
       {!activeUser ? (
         <div>
           {creatorsData?.subscriptions.map((creater, index) => (

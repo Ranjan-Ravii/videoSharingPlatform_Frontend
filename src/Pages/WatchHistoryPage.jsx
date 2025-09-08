@@ -35,7 +35,7 @@ const WatchHistoryPage = () => {
 
 
   return (
-    <div className=" bg-black min-h-full ml-5 mb-15">
+    <div className="min-h-full ml-5 mb-15 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
       {videos.length === 0 ? (
         <div className="w-full bg-black text-white flex items-center justify-center">
           <div className="flex flex-col items-center space-y-4">

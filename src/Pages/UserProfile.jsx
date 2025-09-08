@@ -102,9 +102,9 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div className="w-full min-h-full bg-black text-white mb-15 ml-5">
+      <div className="w-auto min-h-full ml-5 mb-15 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
 
-        <div className="relative h-44 w-full bg-gray-800 rounded-2xl overflow-hidden ">
+        <div className="relative h-44 w-full  bg-gray-800 rounded-2xl overflow-hidden ">
           
           {channelProfile?.coverImage || authCoverImage ? (
             <img

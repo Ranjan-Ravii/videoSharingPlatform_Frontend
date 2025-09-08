@@ -33,7 +33,7 @@ const Home = () => {
   }
 
   return (
-    <div className="bg-black min-h-full ">
+    <div className=" min-h-full ml-5 mb-15 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white ">
       {/* Main Content */}
       <div className="px-2 sm:px-4 py-4 sm:py-6">
         {/* Page Header */}
@@ -62,13 +62,13 @@ const Home = () => {
         </div>
 
         {/* Load More Button */}
-        {videos.length > 0 && (
+        {/* {videos.length > 0 && (
           <div className="flex justify-center mt-8">
             <button className="px-6 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors">
               
             </button>
           </div>
-        )}
+        )} */}
 
         {/* Empty State */}
         {videos.length === 0 && (
