@@ -12,6 +12,8 @@ const Home = () => {
   const dispatch = useDispatch()
   const { videos, loading, error } = useSelector((state) => state.allVideos);
 
+  console.log("Backend URL being used:", import.meta.env.VITE_BACKEND_URL);
+
   useEffect(() => {
     dispatch(getAllVideos())
   }, [dispatch])
