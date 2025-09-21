@@ -60,9 +60,9 @@ const Navbar = () => {
         <div className="flex items-center gap-2 sm:gap-4">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-sm">YT</span>
+              <span className="text-white font-bold text-sm">DV</span>
             </div>
-            <span className="text-white font-semibold text-lg sm:text-xl hidden xs:block">MyTube</span>
+            <span className="text-white font-semibold text-lg sm:text-xl hidden xs:block">DesiVibe</span>
           </Link>
         </div>
 
