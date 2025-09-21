@@ -6,8 +6,8 @@ export const getAllVideos = createAsyncThunk(
   'videos/getAll',
   async (_, thunkApi) => {
     try {
-      const response = await api.get('/video/allvideos');
-
+      const response = await api.get(`/video/allvideos`, {withCredentials: true})
+      
       // ✅ Only return the array of videos from response
       return response.data.data;
     } catch (error) {

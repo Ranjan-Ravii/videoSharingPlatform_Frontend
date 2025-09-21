@@ -9,7 +9,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (credentials, thunkAPI) => {
     try {
-      const response = await api.post('/users/login', credentials);
+      const response = await axios.post(`/users/login`, credentials);
 
       // Store the token in localStorage
       // Save the full user data and tokens
